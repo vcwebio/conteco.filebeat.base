@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# the default is to return the message as is
+# each container type instance can implement its own if required
+stream=$1
+INPUT=$2
+
+if [[ "$INPUT" != "{"* ]] ; then
+
+	if [[ "$INPUT" == "2"* ]] ; then
+
+		LEVEL=$(echo $INPUT | cut -d ' ' -f2 )
+		MESSAGE=$(echo $INPUT | cut -d ' ' -f3- | jq -aR . )
+		printf '{ "source": "logger", "level": "%s", "message":%s }' "$LEVEL" "$MESSAGE"
+		
+	else
+
+		printf "%s" "$INPUT"
+	
+	fi
+
+else 
+
+	printf "%s" "$INPUT"
+
+fi
+
+ 
