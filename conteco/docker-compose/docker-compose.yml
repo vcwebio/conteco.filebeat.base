@@ -1,0 +1,26 @@
+---
+version: '3'
+services:
+
+# START SERVICE filebeat.base
+  filebeat:
+    image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.filebeat.base:7.1.1
+    environment: [] 
+    command: []
+    volumes: [${CONTECO_DC_FILEBEAT_VOLUMES}]
+    ports: []
+    networks: [${CONTECO_DC_FILEBEAT_NETWORKS}]
+    deploy:
+      mode: ${CONTECO_DC_FILEBEAT_DEPLOY_MODE}
+      replicas: ${CONTECO_DC_FILEBEAT_DEPLOY_REPLICAS}
+      resources: 
+        limits: 
+          cpus: '${CONTECO_DC_FILEBEAT_DEPLOY_RESOURCES_LIMITS_CPUS}'
+          memory: '${CONTECO_DC_FILEBEAT_DEPLOY_RESOURCES_LIMITS_MEMORY}'
+        reservations:
+          cpus: '${CONTECO_DC_FILEBEAT_DEPLOY_RESOURCES_RESERVATIONS_CPUS}'
+          memory: '${CONTECO_DC_FILEBEAT_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}'
+# END SERVICE filebeat.base
+
+volumes: {${CONTECO_DC_GLOBAL_VOLUMES}}
+networks: {${CONTECO_DC_GLOBAL_NETWORKS}}
