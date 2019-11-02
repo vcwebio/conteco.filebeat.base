@@ -1,12 +1,7 @@
-filebeat.config:
-  modules:
-    path: ${path.config}/modules.d/*.yml
-    reload.enabled: false
-
-processors:
-- add_cloud_metadata: ~
-
-output.elasticsearch:
-  hosts: '${ELASTICSEARCH_HOSTS:elasticsearch:9200}'
-  username: '${ELASTICSEARCH_USERNAME:}'
-  password: '${ELASTICSEARCH_PASSWORD:}'
+filebeat.inputs:
+- type: log
+  paths: "${CONTECO_DC_FILEBEAT_ENVIRONMENT_FILEPATHS:'/var/log/*.log'}"
+ 
+output.console:
+  enabled: true
+  pretty: false
