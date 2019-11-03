@@ -18,7 +18,7 @@ RUN chmod -R 555 /conteco
 ##### BEGIN image/Dockerfile/build-instructions #####
 ENV CONTECO_ENTRYPOINT "/conteco/bin/filebeat/base/docker-entrypoint"
 COPY ./conteco/configs/usr/share/filebeat/filebeat.yml /usr/share/filebeat/filebeat.yml
-USER filebeat
+#USER filebeat
 ##### END image/Dockerfile/build-instructions #####
 
 ##### BEGIN image.base/Dockerfile/env-labels-footer #####
