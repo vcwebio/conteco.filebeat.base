@@ -5,11 +5,11 @@ export CONTECO_DC_GLOBAL_STACKS=''filebeat.base''
 # END CONFIGURATION
 
 # START OTHER VARIABLES
-export CONTECO_DC_FILEBEAT_ENVIRONMENT_FILEPATHS="'/hostfs/var/log/*.log','/hostfs/var/log/*/*.log'"
+export CONTECO_DC_FILEBEAT_ENVIRONMENT_FILEPATHS="/hostfs/var/lib/docker/containers/*/*.json"
 # END OTHER VARIABLES
 
 # START VOLUMES VARIABLES
-export CONTECO_DC_FILEBEAT_VOLUMES="'/var/log:/hostfs/var/log:ro','/etc:/hostfs/etc:ro'"
+export CONTECO_DC_FILEBEAT_VOLUMES="'/var/lib/docker/containers:/hostfs/var/lib/docker/containers:rw','/etc:/hostfs/etc:ro'"
 export CONTECO_DC_GLOBAL_VOLUMES=""
 # END VOLUMES VARIABLES
 
@@ -22,6 +22,7 @@ export CONTECO_DC_GLOBAL_NETWORKS="${CONTECO_ECOSYSTEM}_overlay: { external: tru
 # END NETWORKS VARIABLES
 
 # START DEPLOY VARIABLES
+export CONTECO_DC_FILEBEAT_DEPLOY_LABELS=
 export CONTECO_DC_FILEBEAT_DEPLOY_MODE="replicated"
 export CONTECO_DC_FILEBEAT_DEPLOY_RESOURCES_LIMITS_CPUS="0.25"
 export CONTECO_DC_FILEBEAT_DEPLOY_RESOURCES_RESERVATIONS_CPUS="0.01"

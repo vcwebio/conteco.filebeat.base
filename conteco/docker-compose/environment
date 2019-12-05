@@ -18,6 +18,7 @@ export CONTECO_DC_FILEBEAT_PORTS=
 export CONTECO_DC_FILEBEAT_ENVIRONMENT_FILEPATHS="/hostfs/var/lib/docker/containers/*/*.json"
 export CONTECO_DC_FILEBEAT_VOLUMES="'/var/lib/docker/containers:/hostfs/var/lib/docker/containers:rw','/etc:/hostfs/etc:ro'"
 export CONTECO_DC_FILEBEAT_NETWORKS="${CONTECO_ECOSYSTEM}_overlay"
+export CONTECO_DC_FILEBEAT_DEPLOY_LABELS=
 export CONTECO_DC_FILEBEAT_DEPLOY_MODE="replicated"
 export CONTECO_DC_FILEBEAT_DEPLOY_RESOURCES_LIMITS_CPUS="0.25"
 export CONTECO_DC_FILEBEAT_DEPLOY_RESOURCES_RESERVATIONS_CPUS="0.01"
