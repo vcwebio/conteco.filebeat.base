@@ -11,7 +11,7 @@ services:
     ports: []
     networks: [${CONTECO_TYPE}_overlay]
     deploy:
-      mode: replicated
+      mode: ${CONTECO_DC_FILEBEAT_DEPLOY_MODE}
       resources:
         limits:
           cpus: '${CONTECO_DC_FILEBEAT_DEPLOY_RESOURCES_LIMITS_CPUS}'
