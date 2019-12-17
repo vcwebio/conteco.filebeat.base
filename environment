@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-export CONTECO_LABEL="Conteco filebeat base"
-export CONTECO_DESCRIPTION="The ElasticSearch Filebeat base image."
+export CONTECO_LABEL="filebeat.base - ContEco"
+export CONTECO_DESCRIPTION="Filebeat Base image, with templated default configuration."
 
 export CONTECO_TYPE="filebeat"
 export CONTECO_NAME="base"

@@ -1,7 +1,31 @@
 filebeat.inputs:
 - type: log
-  paths: "${CONTECO_DC_FILEBEAT_ENVIRONMENT_FILEPATHS:'/var/log/*.log'}"
- 
+  paths: "${CONTECO_DC_FILEBEAT_FILEPATHS:'/var/log/*.log'}"
+
 output.console:
-  enabled: true
+  enabled: ${ES_FILEBEAT_OUTPUT_CONSOLE:false}
   pretty: false
+
+output.elasticsearch:
+  enabled: ${ES_FILEBEAT_OUTPUT_ELASTICSEARCH:false}
+  hosts: ${ES_FILEBEAT_OUTPUT_ELASTICSEARCH_HOSTS:'elasticsearch:9200'}
+
+setup.kibana.host: ${ES_FILEBEAT_OUTPUT_KIBANA_HOST:"kibana:5601"}
+setup.dashboards.enabled: ${ES_FILEBEAT_OUTPUT_KIBANA_DASHBOARDS:false}
+
+output.kafka:
+  enabled: ${ES_FILEBEAT_OUTPUT_KAFKA:false}
+  hosts: ${ES_FILEBEAT_OUTPUT_KAFKA_HOSTS:"kafka:9092"}
+  topic: '${ES_FILEBEAT_OUTPUT_KAFKA_TOPIC:es_filebeat_kafka}'
+  version: "2.0.0"
+  partition.round_robin:
+    reachable_only: false
+
+  required_acks: 1
+  compression: gzip
+  max_message_bytes: 1000000
+
+logging.level: warning
+logging.metrics.enabled: false
+logging.metrics.period: 30s
+logging.json: false
