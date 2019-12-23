@@ -9,7 +9,7 @@ services:
     command: []
     volumes: [${CONTECO_DC_FILEBEAT_VOLUMES}]
     ports: []
-    networks: [${CONTECO_DC_FILEBEAT_NETWORKS}]
+    networks: [${CONTECO_TYPE}_overlay]
     labels: [${CONTECO_DC_FILEBEAT_LABELS}]
     deploy:
       mode: ${CONTECO_DC_FILEBEAT_DEPLOY_MODE}
@@ -24,4 +24,4 @@ services:
 # END SERVICE filebeat.base
 
 volumes: {}
-networks: {${CONTECO_DC_GLOBAL_NETWORKS}}
+networks: {${CONTECO_TYPE}_overlay: { external: true }}
