@@ -19,8 +19,8 @@ services:
         reservations:
           cpus: '${CONTECO_DC_FILEBEAT_DEPLOY_RESOURCES_RESERVATIONS_CPUS}'
           memory: '${CONTECO_DC_FILEBEAT_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}'
-      labels: []
+      labels: [${CONTECO_DC_FILEBEAT_DEPLOY_LABELS}]
 # END SERVICE filebeat.base
 
-volumes: {}
+volumes: {${CONTECO_DC_GLOBAL_VOLUMES}}
 networks: {${CONTECO_TYPE}_overlay: { external: true }}

@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 # START CONFIGURATION
-export CONTECO_DC_GLOBAL_STACKS=''filebeat.base''
+export CONTECO_DC_GLOBAL_STACKS='filebeat.base'
+export CONTECO_DC_GLOBAL_STACKNAMES='filebeat'
+export CONTECO_DC_GLOBAL_VOLUME_LIST='filebeat_volume'
 # END CONFIGURATION
 
 # START OTHER VARIABLES
@@ -17,7 +19,7 @@ export CONTECO_DC_FILEBEAT_ENVIRONMENT_OUTPUT_CONFIG_KAFKA_TOPIC="test"
 # END OTHER VARIABLES
 
 # START VOLUMES VARIABLES
-export CONTECO_DC_FILEBEAT_VOLUMES="'/var/lib/docker/containers:/hostfs/var/lib/docker/containers:rw','/etc:/hostfs/etc:ro'"
+export CONTECO_DC_FILEBEAT_VOLUMES="'/var/lib/docker/containers:/hostfs/var/lib/docker/containers:rw','/etc:/hostfs/etc:ro','${CONTECO_TYPE}_filebeat_volume:/usr/share/filebeat/data'"
 export CONTECO_DC_GLOBAL_VOLUMES=""
 # END VOLUMES VARIABLES
 
