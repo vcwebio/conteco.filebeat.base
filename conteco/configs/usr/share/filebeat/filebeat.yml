@@ -9,6 +9,10 @@ output.console:
 output.elasticsearch:
   enabled: ${ES_FILEBEAT_OUTPUT_ELASTICSEARCH:false}
   hosts: ${ES_FILEBEAT_OUTPUT_CONFIG_ELASTICSEARCH_HOSTS:'elasticsearch:9200'}
+  index: "${ES_FILEBEAT_OUTPUT_CONFIG_ELASTICSEARCH_INDEX:'filebeat'}-%{[beat.version]}-%{+yyyy.MM.dd}"
+
+setup.template.name: "${ES_FILEBEAT_OUTPUT_CONFIG_ELASTICSEARCH_INDEX:'filebeat'}-%{[beat.version]}"
+setup.template.pattern: "${ES_FILEBEAT_OUTPUT_CONFIG_ELASTICSEARCH_INDEX:'filebeat'}-%{[beat.version]}-*"
 
 setup.kibana.host: ${ES_FILEBEAT_OUTPUT_CONFIG_KIBANA_HOST:"kibana:5601"}
 setup.dashboards.enabled: ${ES_FILEBEAT_OUTPUT_CONFIG_KIBANA_DASHBOARDS:false}
