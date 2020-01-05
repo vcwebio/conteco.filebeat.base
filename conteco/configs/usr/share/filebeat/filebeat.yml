@@ -1,6 +1,6 @@
 filebeat.inputs:
 - type: log
-  paths: "${CONTECO_DC_FILEBEAT_FILEPATHS:'/var/log/*.log'}"
+  paths: "${ES_FILEBEAT_FILEPATHS:'/var/log/*.log'}"
 
 output.console:
   enabled: ${ES_FILEBEAT_OUTPUT_CONSOLE:false}

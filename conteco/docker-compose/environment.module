@@ -5,11 +5,12 @@ export CONTECO_DC_GLOBAL_STACKS="filebeat.base"
 export CONTECO_DC_GLOBAL_STACKNAMES="filebeat"
 export CONTECO_DC_GLOBAL_BOOTSTACKS=""
 export CONTECO_DC_GLOBAL_RUNSTACKS="filebeat"
-export CONTECO_DC_GLOBAL_VOLUME_LIST="filebeat_volume"
+export CONTECO_DC_GLOBAL_VOLUME_LIST="conteco_dc_filebeat_volume"
 # END CONFIGURATION
 
 # START OTHER VARIABLES
 export CONTECO_DC_FILEBEAT_ENVIRONMENT_FILEPATHS="/hostfs/var/lib/docker/containers/*/*.json"
+export CONTECO_DC_FILEBEAT_ENVIRONMENT_FILEPATHS_MAPPING=",'/var/lib/docker/containers:/hostfs/var/lib/docker/containers:rw'"
 export CONTECO_DC_FILEBEAT_ENVIRONMENT_OUTPUT_CONSOLE="false"
 export CONTECO_DC_FILEBEAT_ENVIRONMENT_OUTPUT_ELASTICSEARCH="false"
 export CONTECO_DC_FILEBEAT_ENVIRONMENT_OUTPUT_KAFKA="false"
@@ -22,8 +23,6 @@ export CONTECO_DC_FILEBEAT_ENVIRONMENT_OUTPUT_CONFIG_KAFKA_TOPIC="test"
 # END OTHER VARIABLES
 
 # START VOLUMES VARIABLES
-export CONTECO_DC_FILEBEAT_VOLUMES="'/var/lib/docker/containers:/hostfs/var/lib/docker/containers:rw','/etc:/hostfs/etc:ro','${CONTECO_TYPE}_filebeat_volume:/usr/share/filebeat/data'"
-export CONTECO_DC_GLOBAL_VOLUMES=""
 # END VOLUMES VARIABLES
 
 # START PORTS VARIABLES
