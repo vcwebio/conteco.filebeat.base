@@ -1,6 +1,6 @@
-# `filebeat.base` - ContEco
+# `filebeat.kafka` - ContEco
 
-Filebeat Base image, with templated default configuration.
+Filebeat image with Kafka input, with templated default configuration.
 See `conteco.docs.overview` for more information on the ContEco ecosystem.
 
 ## Tags
