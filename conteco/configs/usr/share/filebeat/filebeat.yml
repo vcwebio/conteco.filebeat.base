@@ -1,6 +1,6 @@
 filebeat.inputs:
 - type: log
-  paths: "${ES_FILEBEAT_FILEPATHS:'/var/log/*.log'}"
+  paths: "${ES_FILEBEAT_FILEPATHS:[]}"
 
 output.console:
   enabled: ${ES_FILEBEAT_OUTPUT_CONSOLE:false}
@@ -10,12 +10,12 @@ output.elasticsearch:
   enabled: ${ES_FILEBEAT_OUTPUT_ELASTICSEARCH:false}
   ssl.enabled: ${ES_FILEBEAT_OUTPUT_CONFIG_ELASTICSEARCH_SSL:false}
   hosts: ${ES_FILEBEAT_OUTPUT_CONFIG_ELASTICSEARCH_HOSTS:'elasticsearch:9200'}
-  username: "${ES_FILEBEAT_OUTPUT_CONFIG_ELISTICSEARCH_USERNAME}"
+  username: "${ES_FILEBEAT_OUTPUT_CONFIG_ELASTICSEARCH_USERNAME}"
   password: "${ES_FILEBEAT_OUTPUT_CONFIG_ELASTICSEARCH_PASSWORD}"
-  index: "${ES_FILEBEAT_OUTPUT_CONFIG_ELASTICSEARCH_INDEX:'filebeat'}-%{[beat.version]}-%{+yyyy.MM.dd}"
+  index: "${ES_FILEBEAT_OUTPUT_CONFIG_ELASTICSEARCH_INDEX:filebeat}-%{[beat.version]}-%{+yyyy.MM.dd}"
 
-setup.template.name: "${ES_FILEBEAT_OUTPUT_CONFIG_ELASTICSEARCH_INDEX:'filebeat'}-%{[beat.version]}"
-setup.template.pattern: "${ES_FILEBEAT_OUTPUT_CONFIG_ELASTICSEARCH_INDEX:'filebeat'}-%{[beat.version]}-*"
+setup.template.name: "${ES_FILEBEAT_OUTPUT_CONFIG_ELASTICSEARCH_INDEX:filebeat}-%{[beat.version]}"
+setup.template.pattern: "${ES_FILEBEAT_OUTPUT_CONFIG_ELASTICSEARCH_INDEX:filebeat}-%{[beat.version]}-*"
 
 setup.kibana.host: ${ES_FILEBEAT_OUTPUT_CONFIG_KIBANA_HOST:"kibana:5601"}
 setup.dashboards.enabled: ${ES_FILEBEAT_OUTPUT_CONFIG_KIBANA_DASHBOARDS:false}
@@ -23,7 +23,7 @@ setup.dashboards.enabled: ${ES_FILEBEAT_OUTPUT_CONFIG_KIBANA_DASHBOARDS:false}
 output.logstash:
   enabled: ${ES_FILEBEAT_OUTPUT_LOGSTASH:false}
   hosts: ${ES_FILEBEAT_OUTPUT_CONFIG_LOGSTASH_HOSTS:'logstash:5044'}
-  index: "${ES_FILEBEAT_OUTPUT_CONFIG_LOGSTASH_INDEX:'filebeat'}-%{[beat.version]}-%{+yyyy.MM.dd}"
+  index: "${ES_FILEBEAT_OUTPUT_CONFIG_LOGSTASH_INDEX:filebeat}-%{[beat.version]}-%{+yyyy.MM.dd}"
 
 output.kafka:
   enabled: ${ES_FILEBEAT_OUTPUT_KAFKA:false}
@@ -31,7 +31,7 @@ output.kafka:
   hosts: ${ES_FILEBEAT_OUTPUT_CONFIG_KAFKA_HOSTS:"kafka:9092"}
   username: "${ES_FILEBEAT_OUTPUT_CONFIG_KAFKA_USERNAME}"
   password: "${ES_FILEBEAT_OUTPUT_CONFIG_KAFKA_PASSWORD}"
-  topic: '${ES_FILEBEAT_OUTPUT_CONFIG_KAFKA_TOPIC:es_filebeat_kafka}'
+  topic: "${ES_FILEBEAT_OUTPUT_CONFIG_KAFKA_TOPIC:es_filebeat_kafka}"
   version: "2.0.0"
   partition.round_robin:
     reachable_only: false

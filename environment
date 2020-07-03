@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 export CONTECO_LABEL="filebeat.file - ContEco"
-export CONTECO_DESCRIPTION="Filebeat image with file input, with templated default configuration."
+export CONTECO_DESCRIPTION="ElasticSearch Filebeat image configured for file input, with templated default configuration."
 
 export CONTECO_TYPE="filebeat"
 export CONTECO_NAME="file"
