@@ -38,6 +38,6 @@ LABEL io.vcweb.schema-version="1.0" \
       io.vcweb.base="external.filebeat:7.8.0" \
       io.vcweb.build="image-base" \
       io.vcweb.label="filebeat.file - ContEco" \
-      io.vcweb.description="Filebeat image with file input, with templated default configuration." \
+      io.vcweb.description="ElasticSearch Filebeat image configured for file input, with templated default configuration." \
       io.vcweb.docker.cmd.help="docker run vcwebio/conteco.filebeat.file --help" 
 ##### END image.base/Dockerfile/env-labels-footer #####
